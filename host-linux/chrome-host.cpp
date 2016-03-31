@@ -97,11 +97,12 @@ void Application::parse()
         QString type = json.value("type").toString();
         if (type == "VERSION") {
             resp = {{"version", VERSION}};
-        } else if (!json.value("origin").toString().startsWith("https:")) {
-            resp = {{"result", "not_allowed"}};
-            write(resp, json.value("nonce").toString());
-            return exit(EXIT_FAILURE);
-        }
+        } 
+//        else if (!json.value("origin").toString().startsWith("https:")) {
+//            resp = {{"result", "not_allowed"}};
+//            write(resp, json.value("nonce").toString());
+//            return exit(EXIT_FAILURE);
+//        }
         else if (type == "SIGN") {
             if (!json.contains("cert") || !json.contains("hash")) {
                 resp = {{"result", "invalid_argument"}};

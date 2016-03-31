@@ -51,7 +51,7 @@
 #elif defined(__APPLE__)
 #define PKCS11_MODULE "/Library/EstonianIDCard/lib/esteid-pkcs11.so"
 #else
-#define PKCS11_MODULE "opensc-pkcs11.so"
+#define PKCS11_MODULE "/usr/lib/watchdata/ICP/lib/libwdpkcs_icp.so"
 #endif
 #endif
 
@@ -244,7 +244,7 @@ public:
         if (privateKeyHandle.empty()) {
             throw std::runtime_error("Could not read private key");
         }
-        CK_MECHANISM mechanism = {CKM_RSA_PKCS, 0, 0};
+        CK_MECHANISM mechanism = {CKM_SHA1_RSA_PKCS, 0, 0};
         _log("found %i private keys in slot, using key in position %i", privateKeyHandle.size(), certIndex);
         C(SignInit, session, &mechanism, privateKeyHandle[certIndex]);
         std::vector<unsigned char> hashWithPadding;

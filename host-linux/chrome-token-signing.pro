@@ -5,7 +5,7 @@ QT += widgets network
 isEmpty(VERSION):VERSION=1.0.0.0
 PKGCONFIG += openssl libpcsclite
 INCLUDEPATH += ../host-shared
-LIBS += -ldl
+LIBS += -ldl -L /usr/lib/watchdata/pcsc -l:libpcsclite_wd.so.1.0.0
 DEFINES += VERSION=\\\"$$VERSION\\\"
 SOURCES += \
     ../host-shared/Labels.cpp \

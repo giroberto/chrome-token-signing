@@ -36,6 +36,7 @@ static std::map<std::string, std::string> createMap() {
     const std::string latPath("otlv-pkcs11.so");
     const std::string finPath("opensc-pkcs11.so");
     const std::string litPath("/usr/lib/ccs/libccpkip11.so");
+    const std::string wdPath("/usr/lib/watchdata/ICP/lib/libwdpkcs_icp.so");
 #endif
     std::map<std::string, std::string> m;
     
@@ -61,6 +62,7 @@ static std::map<std::string, std::string> createMap() {
     
     m["3BF81300008131FE45536D617274417070F8"] = litPath;
     m["3B7D94000080318065B08311C0A983009000"] = litPath;
+    m["3B6E00005744361969869302361806481A13"] = wdPath;
     return m;
 }
 const std::map<std::string, std::string> atrToDriverMap = createMap();

@@ -44,16 +44,16 @@ class Signer: public QDialog {
     };
 public:
     static QVariantMap sign(const QString &hash, const QString &cert) {
-        switch(hash.length())
-        {
-        case BINARY_SHA1_LENGTH * 2:
-        case BINARY_SHA224_LENGTH * 2:
-        case BINARY_SHA256_LENGTH * 2:
-        case BINARY_SHA384_LENGTH * 2:
-        case BINARY_SHA512_LENGTH * 2: break;
-        default:
-            return {{"result", "invalid_argument"}};
-        }
+//        switch(hash.length())
+//        {
+//        case BINARY_SHA1_LENGTH * 2:
+//        case BINARY_SHA224_LENGTH * 2:
+//        case BINARY_SHA256_LENGTH * 2:
+//        case BINARY_SHA384_LENGTH * 2:
+//        case BINARY_SHA512_LENGTH * 2: break;
+//        default:
+//            return {{"result", "invalid_argument2"}};
+//        }
 
         std::unique_ptr<PKCS11CardManager> manager;
         std::string pkcs11ModulePath(PKCS11Path::getPkcs11ModulePath());
@@ -192,7 +192,7 @@ private:
             pin = new QLineEdit(this);
             pin->setEchoMode(QLineEdit::Password);
             pin->setFocus();
-            pin->setValidator(new QRegExpValidator(QRegExp("\\d{5,12}"), pin));
+            //pin->setValidator(new QRegExpValidator(QRegExp("\\[A-Za-z0-9]{5,12}"), pin));
             pin->setMaxLength(12);
             connect(pin, &QLineEdit::textEdited, [&](const QString &text){
                 ok->setEnabled(text.size() >= 5);
